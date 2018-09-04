@@ -1,7 +1,13 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Platform, StatusBar, StyleSheet, View,Text } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
+//import { Container, Header, Content, Footer, FooterTab, Button, Icon, Text, Badge,Body,Left,Right} from 'native-base';
+
+import Footer from './toukou/components/Footer';
+import Header from './toukou/components/Header';
+import Postphoto from './toukou/components/Postphoto';
+
 
 export default class App extends React.Component {
   state = {
@@ -9,6 +15,17 @@ export default class App extends React.Component {
   };
 
   render() {
+    return(
+      <View>
+      <Header>
+      </Header>
+      <Postphoto>
+      </Postphoto>
+      <Footer>
+      </Footer>
+      </View>
+    );
+    /*
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
         <AppLoading
@@ -25,6 +42,7 @@ export default class App extends React.Component {
         </View>
       );
     }
+    */
   }
 
   _loadResourcesAsync = async () => {
