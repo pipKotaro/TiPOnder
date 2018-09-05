@@ -2,6 +2,7 @@ import React from 'react';
 import { Platform, StatusBar, StyleSheet, View,Text } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
+import{Container,Content} from 'native-base';
 //import { Container, Header, Content, Footer, FooterTab, Button, Icon, Text, Badge,Body,Left,Right} from 'native-base';
 
 import Footer from './toukou/components/Footer';
@@ -16,14 +17,16 @@ export default class App extends React.Component {
 
   render() {
     return(
-      <View>
+      <Container>
       <Header>
         </Header>
+        <Content>
       <Postphoto>
         </Postphoto>
+        </Content>
       <Footer>
         </Footer>
-      </View>
+         </Container>
     );
     /*
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {

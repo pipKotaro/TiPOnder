@@ -31,14 +31,15 @@ export default class PostImagine extends Component {
 render(){
   return(
 
-    <View style={{height:'75%'}}>
-      <Image style={{ padding: 5, backgroundColor: 'green',margin: 2,height: 50,flex: 1}}
+    <View style={{flex: 1}}>
+      <Image style={{ padding: 5, backgroundColor: 'green',margin: 2,flex: 1}}
       source={{uri : this.state.imageuri}}>
       </Image>
 
 
 
     <FlatList
+    style={{height: 600}}
       numColumns={4}
       data={this.state.photos}
       extraData={this.state.photos}

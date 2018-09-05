@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {StyleSheet, View, ScrollView} from 'react-native';
-import { Container, Header, Content, Footer, FooterTab, Button, Icon, Text, Badge,Body,Left,Right} from 'native-base';
+import { Container, Header, Content, Footer,
+        FooterTab, Button, Icon, Text, Badge,
+        Body,Left,Right,TouchableHighlight} from 'native-base';
 
 export default class åHeaderExample extends Component {
   render() {
@@ -17,7 +19,7 @@ export default class åHeaderExample extends Component {
       </Body>
       <Right>
           <Button transparent>
-            <Text>Go </Text>
+            <Text>Go</Text>
             <Icon name='arrow-forward' />
           </Button>
         </Right>
