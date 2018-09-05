@@ -127,17 +127,17 @@ const styles = StyleSheet.create({
     hanten: {
     position: 'absolute',
     left: (Dimensions.get('window').width - 80),
-    bottom:(Dimensions.get('window').height - 90),
+    bottom:(Dimensions.get('window').height - 150),
     width: 50,
     height: 50,
     borderRadius: 25, //丸さ具合
 },
     flash: {
     position: 'absolute',
-    left: (Dimensions.get('window').width/2-30),
-    bottom:(Dimensions.get('window').height - 90),
-    width: 50,
-    height: 50,
-    borderRadius: 25, //丸さ具合
+    left: (30),
+    bottom:(Dimensions.get('window').height - 145),
+    width: 44,
+    height: 44,
+    borderRadius: 22, //丸さ具合
 },
 });
