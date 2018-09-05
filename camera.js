@@ -95,6 +95,20 @@ export default class CameraView extends React.Component {
 
             /*******************************/
 
+            <TouchableHighlight
+                  onPress={
+                    photo => {
+                        alert('本来は戻るよ！');
+                    }
+                  }>
+
+                <Image
+                  style = {styles.back}
+                  source = {{uri:'http://illust-kuma.com/kumaimg/batu8.png'}}>
+                </Image>
+
+              </TouchableHighlight>
+
 
 
 
@@ -134,10 +148,20 @@ const styles = StyleSheet.create({
 },
     flash: {
     position: 'absolute',
-    left: (30),
+    left: (Dimensions.get('window').width/2-22),
     bottom:(Dimensions.get('window').height - 145),
     width: 44,
     height: 44,
     borderRadius: 22, //丸さ具合
 },
+    back: {
+    position: 'absolute',
+    left: (30),
+    bottom:(Dimensions.get('window').height - 145),
+    width: 40,
+    height: 40,
+    borderRadius: 20, //丸さ具合
+    backgroundColor:'#fff',
+},
+
 });
