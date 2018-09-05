@@ -18,11 +18,11 @@ export default class App extends React.Component {
     return(
       <View>
       <Header>
-      </Header>
+        </Header>
       <Postphoto>
-      </Postphoto>
+        </Postphoto>
       <Footer>
-      </Footer>
+        </Footer>
       </View>
     );
     /*
