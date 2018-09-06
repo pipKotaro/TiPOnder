@@ -4,8 +4,16 @@ import React, { Component } from 'react';
 import { Container, Header, Content, Button, Text, Fab ,Icon} from 'native-base';
 //fabで円のアクション系を書く
 
+import { createStackNavigator } from 'react-navigation'; // Version can be specified in package.json
+// import HomeScreen from './App';
 
 export default class CameraView extends React.Component {
+
+  //header消去
+  static navigationOptions = {
+      header: null,
+  }
+
   state = {
     hasCameraPermission: null,
     type: Camera.Constants.Type.back,//カメラの内カメとか,いんかめと
@@ -23,6 +31,7 @@ export default class CameraView extends React.Component {
   }
 
   render() {
+
 
       return (
         <View style={{ flex: 1 }}>
@@ -66,7 +75,7 @@ export default class CameraView extends React.Component {
 
                 <Image
                   style = {styles.shutter}
-                  source = {{uri:'https://i.gyazo.com/7908bdf5fe539c08f430efbae9185607.png'}}>
+                  source = {{uri:'https://i.gyazo.com/dd5af74e578c2b1961a5aa104f784f87.png'}}>
                 </Image>
 
               </TouchableHighlight>
@@ -96,11 +105,7 @@ export default class CameraView extends React.Component {
             /*******************************/
 
             <TouchableHighlight
-                  onPress={
-                    photo => {
-                        alert('本来は戻るよ！');
-                    }
-                  }>
+                    onPress={() => this.props.navigation.navigate('Next')}>
 
                 <Image
                   style = {styles.back}
@@ -140,24 +145,24 @@ const styles = StyleSheet.create({
   },
     hanten: {
     position: 'absolute',
-    left: (Dimensions.get('window').width - 80),
-    bottom:(Dimensions.get('window').height - 150),
-    width: 50,
-    height: 50,
-    borderRadius: 25, //丸さ具合
+    left: (Dimensions.get('window').width - 70),
+    bottom:(Dimensions.get('window').height - 80),
+    width: 45,
+    height: 45,
+    borderRadius: 22.5, //丸さ具合
 },
     flash: {
     position: 'absolute',
     left: (Dimensions.get('window').width/2-22),
-    bottom:(Dimensions.get('window').height - 145),
-    width: 44,
-    height: 44,
-    borderRadius: 22, //丸さ具合
+    bottom:(Dimensions.get('window').height - 75),
+    width: 40,
+    height: 40,
+    borderRadius: 20, //丸さ具合
 },
     back: {
     position: 'absolute',
-    left: (30),
-    bottom:(Dimensions.get('window').height - 145),
+    left: (20),
+    bottom:(Dimensions.get('window').height - 75),
     width: 40,
     height: 40,
     borderRadius: 20, //丸さ具合
@@ -165,3 +170,13 @@ const styles = StyleSheet.create({
 },
 
 });
+
+// const RootStack = createStackNavigator(
+//   {
+//     Home: CameraView,
+//     Details: HomeScreen,
+//   },
+//   {
+//     initialRouteName: 'Home',
+//   }
+// );
