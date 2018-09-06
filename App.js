@@ -3,11 +3,14 @@ import { Platform, StatusBar, StyleSheet, View,Text } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import{Container,Content} from 'native-base';
+import { createStackNavigator } from 'react-navigation'; // Version can be specified in package.json
+
 //import { Container, Header, Content, Footer, FooterTab, Button, Icon, Text, Badge,Body,Left,Right} from 'native-base';
 
 import Footer from './toukou/components/Footer';
 import Header from './toukou/components/Header';
 import Postphoto from './toukou/components/Postphoto';
+import Posttext from './toukou/components/Posttext';
 
 
 export default class App extends React.Component {
@@ -21,8 +24,8 @@ export default class App extends React.Component {
       <Header>
         </Header>
         <Content>
-      <Postphoto>
-        </Postphoto>
+        <Posttext>
+        </Posttext>
         </Content>
       <Footer>
         </Footer>
@@ -47,6 +50,14 @@ export default class App extends React.Component {
     }
     */
   }
+
+
+
+
+
+
+
+
 
   _loadResourcesAsync = async () => {
     return Promise.all([

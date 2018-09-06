@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { Platform, StatusBar, StyleSheet, View,Text,FlatList,Alert,CameraRoll,Image,ScrollView,TouchableHighlight} from 'react-native';
+import { Platform, StatusBar, StyleSheet, View,
+        Text,FlatList,Alert,CameraRoll,Image,ScrollView,
+        TouchableHighlight} from 'react-native';
+import camera from '../image/camera.png';
 
-export default class PostImagine extends Component {
+export default class Postphoto extends Component {
 
  constructor(){
    super()
@@ -39,7 +42,7 @@ render(){
 
 
     <FlatList
-    style={{height: 600}}
+    style={{height:600}}
       numColumns={4}
       data={this.state.photos}
       extraData={this.state.photos}
@@ -49,7 +52,7 @@ render(){
             return <TouchableHighlight key={i} onPress={()=>{
               Alert.alert(
                 'Alert Title',
-                'My Alert Msg',
+                '林の画面に移動',
                 [
                   {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
                   {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
@@ -61,8 +64,8 @@ render(){
             }
 
             >
-            <Image style={{ padding: 5, backgroundColor: 'green',margin: 7,width: 80, height: 80}}
-                     source={{uri : 'https://image.freepik.com/free-icon/no-translate-detected_318-11159.jpg'}}>
+            <Image style={{ padding: 5,margin: 7,width: 80, height: 80}}
+                     source={camera}>
                      </Image>
                      </TouchableHighlight>
 
