@@ -24,8 +24,8 @@ export default class App extends React.Component {
       <Header>
         </Header>
         <Content>
-        <Posttext>
-        </Posttext>
+        <Postphoto>
+        </Postphoto>
         </Content>
       <Footer>
         </Footer>
