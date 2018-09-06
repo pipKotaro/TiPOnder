@@ -89,7 +89,7 @@ export default class HomeScreen extends React.Component {
        </View>
    return (
      <Container>
-         <Header />
+
 
          <CardFlip style={{flex:1}} ref={(card) => this.card = card} >
         <TouchableWithoutFeedback style={{flex:1}} onPress={this._onPressButton}>
