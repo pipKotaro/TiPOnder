@@ -1,20 +1,11 @@
 import React from 'react';
 import { Button, View, Text } from 'react-native';
-
 import { createStackNavigator } from 'react-navigation'; // Version can be specified in package.json
-import Camera from './camera';
-import aaa from './aaa';
-
-
-
+import Camera from './camera'
+import aaa from './aaa'
+import bbb from './bbb'
 
 class HomeScreen extends React.Component {
-
-//これでヘッター隠す
-  static navigationOptions = {
-      header: null,
-  }
-
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -30,15 +21,15 @@ class HomeScreen extends React.Component {
 
 
 
-export const RootStack = createStackNavigator(
+const RootStack = createStackNavigator(
   {
     Home: HomeScreen,
     Details: Camera,
     Next:aaa,
+    bbb:bbb,
   },
-
   {
-    initialRouteName: 'Home',//最初の画面
+    initialRouteName: 'Home', //最初の画面
   }
 );
 

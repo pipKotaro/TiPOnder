@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, View, Text } from 'react-native';
-
 import { createStackNavigator } from 'react-navigation'; // Version can be specified in package.json
 
 
@@ -30,9 +29,10 @@ export default class HomeScreen extends React.Component {
 
         <Text>more</Text>
         <Button
-          title="Next B!!!"
-          onPress={() => this.props.navigation.navigate('bbb')}
-          />
+          title="Next A!!!"
+          onPress={() => this.props.navigation.navigate('aaa')}
+        />
+
       </View>
     );
   }

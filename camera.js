@@ -51,7 +51,7 @@ export default class CameraView extends React.Component {
 
               <Image
                 style = {styles.hanten}
-                source = {{uri:'https://i.gyazo.com/59b0c34869c0a7d2bca5c4125abbe380.png'}}>
+                source = {{uri:'https://i.gyazo.com/d2bed6d0670169b633c5c7a277d8d15f.png'}}>
               </Image>
 
             </TouchableHighlight>
@@ -64,11 +64,7 @@ export default class CameraView extends React.Component {
                     // カメラオブジェクト取得
                     this.setPhoto(photo);
                     // 三秒後にモーダルを閉じる
-                    setTimeout(() => {
-                      this.setPhoto(null);
-                      // 写真を保存
-                      CameraRoll.saveToCameraRoll(photo.uri);
-                    }, 3000);
+
                   });
                 }
               }}>
@@ -95,8 +91,8 @@ export default class CameraView extends React.Component {
                   style = {styles.flash}
                   source = {{
                     uri: this.state.flashMode === Camera.Constants.FlashMode.off
-                    ? 'https://i.gyazo.com/1197340ec27d70777813db7b726c5bdd.png'
-                    : 'https://i.gyazo.com/3b2175d30266231b61a1ce4a48416ae9.png'
+                    ? 'https://i.gyazo.com/1e275378b1839dd9dd7f2941912f39af.png'
+                    : 'https://i.gyazo.com/3ca548f985bac989512ea9644b585393.png'
                     }}>
                 </Image>
 
@@ -109,7 +105,7 @@ export default class CameraView extends React.Component {
 
                 <Image
                   style = {styles.back}
-                  source = {{uri:'http://illust-kuma.com/kumaimg/batu8.png'}}>
+                  source = {{uri:'https://i.gyazo.com/68a742225fc822e6ddda08d06fb2acf8.png'}}>
                 </Image>
 
               </TouchableHighlight>
@@ -118,17 +114,41 @@ export default class CameraView extends React.Component {
 
 
 
-
+              //写真画面表示
           <Modal
             animationType="slide"
             visible={this.state.photo !== null}
             onRequestClose={() => {
               alert('Modal has been closed.');
             }}>
-            <Image style={{width: "100%", height: "100%" }}
+            <Image style={{width: "100%", height: "100%"}}
               source={{ uri: this.state.photo === null ? "" : this.state.photo.uri }}/>
-          </Modal>
 
+
+            //写真確認後、OKボタン
+            <TouchableHighlight
+              transparent
+              onPress={() => {this.setPhoto(null);}}
+               >
+              <Image
+                style = {styles.ok}
+                source = {{uri:'https://i.gyazo.com/eb5bb04aa0382098c5b49b81b4bd1664.png'}}>
+              </Image>
+            </TouchableHighlight>
+
+            //写真確認後、キャンセルボタン
+            <TouchableHighlight
+              transparent
+              onPress={() => {this.setPhoto(null);}}
+               >
+              <Image
+                style = {styles.ng}
+                source = {{uri:'https://i.gyazo.com/68a742225fc822e6ddda08d06fb2acf8.png'}}>
+              </Image>
+            </TouchableHighlight>
+
+
+          </Modal>
         </View>
       );
     }
@@ -146,14 +166,14 @@ const styles = StyleSheet.create({
     hanten: {
     position: 'absolute',
     left: (Dimensions.get('window').width - 70),
-    bottom:(Dimensions.get('window').height - 80),
-    width: 45,
-    height: 45,
-    borderRadius: 22.5, //丸さ具合
+    bottom:(Dimensions.get('window').height - 75),
+    width: 40,
+    height: 40,
+    borderRadius: 20, //丸さ具合
 },
     flash: {
     position: 'absolute',
-    left: (Dimensions.get('window').width/2-22),
+    left: (Dimensions.get('window').width/2-20),
     bottom:(Dimensions.get('window').height - 75),
     width: 40,
     height: 40,
@@ -161,13 +181,30 @@ const styles = StyleSheet.create({
 },
     back: {
     position: 'absolute',
-    left: (20),
+    left: (35),
     bottom:(Dimensions.get('window').height - 75),
     width: 40,
-    height: 40,
+    height: 35,
     borderRadius: 20, //丸さ具合
-    backgroundColor:'#fff',
 },
+    ok: {
+    position: 'absolute',
+    left: (Dimensions.get('window').width / 2) - 30,
+    bottom: 40,
+    width: 60,
+    height: 60,
+    borderRadius: 30, //丸さ具合
+},
+    ng: {
+    position: 'absolute',
+    left: (25),
+    bottom:(Dimensions.get('window').height - 70),
+    width: 40,
+    height: 35,
+    borderRadius: 20, //丸さ具合
+}
+
+
 
 });
 
