@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, View,Text } from 'react-native';
+import { Platform, StatusBar, StyleSheet, View,Text,Button } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import{Container,Content} from 'native-base';
@@ -12,13 +12,15 @@ import Header from './toukou/components/Header';
 import Postphoto from './toukou/components/Postphoto';
 import Posttext from './toukou/components/Posttext';
 
+import Camera from './camera'
+import aaa from './aaa'
+import bbb from './bbb'
 
-export default class App extends React.Component {
-  state = {
-    isLoadingComplete: false,
-  };
 
+
+class HomeScreen extends React.Component {
   render() {
+
     return(
       <Container>
       <Header>
@@ -31,32 +33,21 @@ export default class App extends React.Component {
         </Footer>
          </Container>
     );
-    /*
-    if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
-      return (
-        <AppLoading
-          startAsync={this._loadResourcesAsync}
-          onError={this._handleLoadingError}
-          onFinish={this._handleFinishLoading}
+
+
+  /*  return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Home Screen</Text>
+        <Button
+          title="Go to Camera!!"
+          onPress={() => this.props.navigation.navigate('Details')}
         />
-      );
-    } else {
-      return (
-        <View style={styles.container}>
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <AppNavigator />
-        </View>
-      );
-    }
+      </View>
+    );
     */
+
   }
-
-
-
-
-
-
-
+}
 
 
   _loadResourcesAsync = async () => {
@@ -81,14 +72,22 @@ export default class App extends React.Component {
     console.warn(error);
   };
 
-  _handleFinishLoading = () => {
-    this.setState({ isLoadingComplete: true });
-  };
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
+
+const RootStack = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Details: Camera,
+    Next:aaa,
+    bbb:bbb,
   },
-});
+  {
+    initialRouteName: 'Home', //最初の画面
+  }
+);
+
+export default class App extends React.Component {
+  render() {
+    return <RootStack />;
+  }
+}
