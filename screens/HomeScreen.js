@@ -11,6 +11,7 @@ import {
  Modal,
  TouchableHighlight,
  TouchableWithoutFeedback,
+ Alert
 
 } from 'react-native';
 import {
@@ -33,12 +34,13 @@ import CardFlip from 'react-native-card-flip';
 
 var Dimensions = require('Dimensions');
 const questions = [
- {question: "Q参観日これでいい？\n　#参観日", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRu_Ruwx32hDxrfYEYb0Jvx4Cl6A-f6PiUx0wAdyxtdNeoERLGx", good:90},
- {question: "Q10月の北海道これでいい？\n　#10月　#北海道", image: "http://img4.zozo.jp/fashionnews/107025/master_640_1.jpg", good:80},
- {question: "Q野球観戦これでいいですか？\n　#野球観戦　#Baseball", image: "https://arine.akamaized.net/uploads/photo/external_photo/data/307775/xlarge_348c9101-ae88-4c23-bbe5-2bbb2bece8bf.jpg", good:70},
+ {question: "　Q参観日これでいい？\n　#参観日", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRu_Ruwx32hDxrfYEYb0Jvx4Cl6A-f6PiUx0wAdyxtdNeoERLGx", good:90},
+ {question: "　Q10月の北海道これでいい？\n　#10月　#北海道", image: "http://img4.zozo.jp/fashionnews/107025/master_640_1.jpg", good:80},
+ {question: "　Q野球観戦これでいいですか？\n　#野球観戦　#Baseball", image: "https://arine.akamaized.net/uploads/photo/external_photo/data/307775/xlarge_348c9101-ae88-4c23-bbe5-2bbb2bece8bf.jpg", good:70},
 ]
 
 export default class HomeScreen extends React.Component {
+
  static navigationOptions = {
    header: null,
  };
@@ -93,8 +95,8 @@ export default class HomeScreen extends React.Component {
         <TouchableWithoutFeedback style={{flex:1}} onPress={this._onPressButton}>
         <View style={{flex:1}}>
           <View style={{flex:8,margin:8}}>
-          <Image source={{uri:this.state.questions[this.state.count].image}}resizeMode='cover' style={{flex:8,width: null, borderRadius: 20}}/>
-          <View style={{height:70,top:-90,justifyContent:'center'}}>
+          <Image source={{uri:this.state.questions[this.state.count].image}}resizeMode='cover' style={{flex:8,width: null, borderRadius: 30,borderColor:'#707070',borderWidth:1}}/>
+          <View style={{height:70,top:-75,justifyContent:'center'}}>
           <Text style={styles.TextShadowStyle}>
             {this.state.questions[this.state.count].question }
              </Text>
@@ -109,24 +111,37 @@ export default class HomeScreen extends React.Component {
 
          </View>
          </TouchableWithoutFeedback >
-         <TouchableWithoutFeedback style={{}} onPress={() => DismissKeyboard()} >
-         <View>
-          <Button
-            onPress={() => {
-              this.setModalVisible(!this.state.modalVisible);
-             this.card.flip();
-             this.setState({isReverse:!this.state.isReverse})}}>
-            <Text　style={{textAlign: 'right',fontSize: 20,color:'black'}}>投稿</Text>
-          </Button>
-          <View style={{marginTop: 22}}>
-            <Text style={styles.TextCommentStyle}>
-              {this.state.questions[this.state.count].question }
-               </Text>
-               <View style={{flex:1,flexDirection:'row',justifyContent: 'center'}}>
-                 <Image source={{uri:this.state.questions[this.state.count].image}} resizeMode='contain' style={{height:100,width:100,flex:1, borderRadius: 20}}/>
-                  {this.state.isReverse?<TextInput style={{height:300,flex:1, borderRadius: 20}} multiline={true} maxLength = {140} keyboardType='default' returnKeyType='default' autoFocus={true} placeholder="hoge"/>:<View></View>}
+         <TouchableWithoutFeedback onPress={() => DismissKeyboard()} >
+         <View  style={{margin:8,flex:1}}>
 
+          <View  style={{borderRadius:30,borderWidth:1,borderColor:'#707070',margin:10,flex:3}}>
+              <View style={{flex:1,flexDirection:'row', justifyContent: 'space-between',margin:8}}>
+                  <Button style={{backgroundColor:'rgba(0,0,0,0)'}}
+                    onPress={() => {
+
+                     this.card.flip();
+                     this.setState({isReverse:!this.state.isReverse})}}>
+                    <Text　style={{textAlign: 'right',fontSize: 20,color:'black'}}>戻る</Text>
+                  </Button>
+                  <Button style={{backgroundColor:'rgba(0,0,0,0)'}}
+                    onPress={() => {
+                      Alert.alert('送信しました')
+                      this.card.flip();
+                     this.setState({isReverse:!this.state.isReverse})}}>
+                    <Text　style={{textAlign: 'right',fontSize: 20,color:'black'}}>送信</Text>
+                  </Button>
               </View>
+              <View style={{flex:4}}>
+                <Text style={styles.TextCommentStyle}>
+                  {this.state.questions[this.state.count].question }
+                   </Text>
+                <View style={{flex:3,flexDirection:'row',justifyContent: 'center'}}>
+                 <Image source={{uri:this.state.questions[this.state.count].image}} resizeMode='contain' style={{height:null,flex:1, borderRadius: 20,borderColor:'#707070',borderWidth:1,margin:5}}/>
+                  {this.state.isReverse?<TextInput style={{height:null,flex:1, borderRadius: 30,margin:5}} multiline={true} maxLength = {140} keyboardType='default' returnKeyType='default' autoFocus={true} placeholder="コメントを記入"/>:<View></View>}
+                </View>
+              </View>
+          </View>
+          <View  style={{margin:8,flex:2}}>
           </View>
           </View>
           </TouchableWithoutFeedback>
@@ -185,6 +200,7 @@ export default class HomeScreen extends React.Component {
    },
    TextCommentStyle:
    {
+     flex:1,
      textAlign: 'left',
      fontSize: 20,
      color:'black',
