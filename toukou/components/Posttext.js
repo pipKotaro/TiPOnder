@@ -10,6 +10,8 @@ export default class Posttext extends Component {
     this.state = {text: ''};
   }
 
+  
+
 render(){
   return(
     <View>//画面全体

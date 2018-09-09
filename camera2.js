@@ -105,7 +105,7 @@ export default class CameraView extends React.Component {
             /*******************************/
 
             <TouchableHighlight
-                    onPress={() => this.props.navigation.navigate('Postphoto')}>
+                    onPress={() => this.props.navigation.navigate('HomeView')}>
 
                 <Image
                   style = {styles.back}

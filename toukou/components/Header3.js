@@ -27,21 +27,25 @@ export default class MyHeader extends Component {
     return (
       <Header style={{backgroundColor: '#444C5C'}}>
       <Left>
-
-         <Image style={{ padding: 5,margin: 7,width: 20, height: 20,backgroundColor: '#444C5C'}}>
+      <Button transparent
+        onPress={() => this.props.navigation.navigate('Postphoto') }
+      >
+         <Image style={{ padding: 5,margin: 10,width: 20, height: 20,backgroundColor: '#444C5C'}}
+         source = {{uri:'https://i.gyazo.com/9afb239d09983865e4da63f9e1b1adf5.png'}}>
                   </Image>
+        </Button>
        </Left>
 
       <Body>
-      <Text  style={{color: 'white', fontWeight: 'bold',textAlign: 'center'}}>CLOVER</Text>
+      <Text  style={{color: 'white', fontWeight: 'bold',textAlign: 'center'}}>投稿</Text>
       </Body>
 
       <Right>
           <Button transparent
-            onPress={() => this.props.navigation.navigate('Postphoto') }
+            onPress={() => this.props.navigation.navigate('HomeView') }
           >
-          <Image style={{ padding: 5,margin: 7,width: 30, height: 29}}
-                   source={toukou}>
+          <Image style={{ padding: 7,margin: 0,width: 27, height: 20}}
+          source = {{uri:'https://i.gyazo.com/8862625216fb020c8439283960844481.png'}}>
                    </Image>
           </Button>
         </Right>

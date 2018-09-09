@@ -4,27 +4,29 @@ import { Constants,AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import{Container,Content} from 'native-base';
 import { createStackNavigator } from 'react-navigation'; // Version can be specified in package.json
-
+import toukou from './toukou/image/toukou.png';
 //import { Container, Header, Content, Footer, FooterTab, Button, Icon, Text, Badge,Body,Left,Right} from 'native-base';
 
 import Footer from './toukou/components/Footer';
-import Header from './toukou/components/Header';
+import MyHeader from './toukou/components/Header';
+import MyHeader2 from './toukou/components/Header2';
+import MyHeader3 from './toukou/components/Header3';
 import Postphoto from './toukou/components/Postphoto';
 import Posttext from './toukou/components/Posttext';
 import HomeScreen from './screens/HomeScreen';
 import First from './firstView';
-import Camera from './camera';
+import CameraView from './camera';
+import CameraView2 from './camera2';
+
 import aaa from './aaa';
 import bbb from './bbb';
-
-
-
 
 export default class App extends React.Component {
   static navigationOptions = {
           header: null,
       }
   render() {
+    return <RootStack />;
     return <MyNavigator />;
   }
 }
@@ -45,7 +47,7 @@ class ScreenComponentOne extends React.Component {
 
   render() {
     return (
-      <TouchableWithoutFeedback style={{flex:1}} onPress={() => this.props.navigation.navigate('RouteNameTwo')}>
+      <TouchableWithoutFeedback style={{flex:1}} onPress={() => this.props.navigation.navigate('HomeView')}>
          <Image source={{uri:'https://i.gyazo.com/1e221d683c11b25f9c4be8cd26c5defe.png'}} style={{flex:1}} />
     </TouchableWithoutFeedback >
     );
@@ -53,9 +55,7 @@ class ScreenComponentOne extends React.Component {
 }
 
 class ScreenComponentTwo extends React.Component {
-  static navigationOptions = {
-    headerTitle: 'Second screen',
-  };
+
   static navigationOptions = {
           header: null,
       }
@@ -63,72 +63,121 @@ class ScreenComponentTwo extends React.Component {
   render() {
     return (
       <Container>
-      <Header>
-        </Header>
-        <Content>
+
+      <MyHeader navigation={this.props.navigation}>
+        </MyHeader>
+
         <HomeScreen>
         </HomeScreen>
-        </Content>
-      <Footer>
+
+
+      <Footer navigation={this.props.navigation}>
         </Footer>
+
          </Container>
     );
   }
 }
 
 class ScreenComponentThree extends React.Component {
-  static navigationOptions = ({ navigation }) => {
-    return {
-      headerTitle: `Number: ${navigation.getParam('randomNumber')}`,
-    };
-  };
 
   static navigationOptions = {
-       header: null,
-   }
+          header: null,
+      }
 
   render() {
     return (
-      <View
-        style={{
-          flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center',
-          borderWidth: 25,
-          borderColor: 'purple',
-        }}>
-        <Text style={{ fontSize: 25 }}>
-          {this.props.navigation.getParam('randomNumber')}
-        </Text>
-        <Button
-          title="Get a new random number"
-          onPress={() => {
-            this.props.navigation.setParams({
-              randomNumber: getRandomNumber(),
-            });
-          }}
-        />
-        <Button
-          title="Add another two"
-          onPress={() => this.props.navigation.push('RouteNameTwo')}
-        />
-        <Button
-          title="Go back"
-          onPress={() => this.props.navigation.goBack()}
-        />
-      </View>
+      <Container>
+
+      <MyHeader2 navigation={this.props.navigation}>
+        </MyHeader2>
+
+        <Postphoto navigation={this.props.navigation}>
+        </Postphoto>
+
+
+        <Footer navigation={this.props.navigation}>
+          </Footer>
+         </Container>
     );
   }
 }
 
-const MyNavigator = createStackNavigator(
+class ScreenComponentFore extends React.Component {
+
+  static navigationOptions = {
+          header: null,
+      }
+
+  render() {
+    return (
+      <Container>
+
+
+        <CameraView navigation={this.props.navigation}>
+        </CameraView>
+
+
+         </Container>
+    );
+  }
+}
+
+class ScreenComponentFore2 extends React.Component {
+
+  static navigationOptions = {
+          header: null,
+      }
+
+  render() {
+    return (
+      <Container>
+
+
+        <CameraView2 navigation={this.props.navigation}>
+        </CameraView2>
+
+
+         </Container>
+    );
+  }
+}
+
+
+class ScreenComponentFive extends React.Component {
+
+  static navigationOptions = {
+          header: null,
+      }
+
+  render() {
+    return (
+      <Container>
+
+      <MyHeader3 navigation={this.props.navigation}>
+        </MyHeader3>
+
+        <Posttext navigation={this.props.navigation}>
+        </Posttext>
+
+
+        <Footer navigation={this.props.navigation}>
+          </Footer>
+         </Container>
+    );
+  }
+}
+
+export const RootStack = createStackNavigator(
   {
-    RouteNameOne: ScreenComponentOne,
-    RouteNameTwo: ScreenComponentTwo,
-    RouteNameThree: ScreenComponentThree,
+    Home: ScreenComponentOne,
+    HomeView: ScreenComponentTwo,
+    Postphoto: ScreenComponentThree,
+    CameraView: ScreenComponentFore,
+    CameraView2: ScreenComponentFore2,
+    Posttext: ScreenComponentFive
   },
   {
-    // headerTransitionPreset: 'uikit',
-    // mode: 'modal',
+    initialRouteName: 'Home', //最初の画面
   }
 );

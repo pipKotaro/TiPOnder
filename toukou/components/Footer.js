@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {StyleSheet, View, ScrollView,Alert} from 'react-native';
 import { Container, Header, Content, Footer, FooterTab, Button, Icon, Text, Badge,Body,Left,Right} from 'native-base';
-
+import { createStackNavigator } from 'react-navigation'; // Version can be specified in package.json
 
 
 export default class FooterExample extends Component {
@@ -13,30 +13,30 @@ export default class FooterExample extends Component {
         <Footer>
           <FooterTab>
             <Button
-            onPress={this.onPressLearnMore}
+            onPress={() => this.props.navigation.navigate('HomeView') }
             >
 
             <Icon name="home" />
-            <Text>Home</Text>
+
 
             </Button>
             <Button vertical
-            onPress={this.onPressLearnMore}
+            onPress={() => this.props.navigation.navigate('CameraView2') }
             >
               <Icon name="camera" />
-              <Text>Camera</Text>
+
             </Button>
             <Button
             onPress={this.onPressLearnMore}
             >
               <Icon active name="navigate" />
-              <Text>Navigate</Text>
+
             </Button>
             <Button vertical
             onPress={this.onPressLearnMore}
             >
               <Icon name="settings" />
-              <Text>Settings</Text>
+
             </Button>
           </FooterTab>
         </Footer>

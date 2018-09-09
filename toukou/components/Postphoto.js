@@ -4,6 +4,9 @@ import { Platform, StatusBar, StyleSheet, View,
         TouchableHighlight} from 'react-native';
 import camera from '../image/camera.png';
 
+import { createStackNavigator } from 'react-navigation'; // Version can be specified in package.json
+
+
 export default class Postphoto extends Component {
 
  constructor(){
@@ -56,19 +59,7 @@ render(){
       renderItem={
         ({item, i}) => {
           if(item.key == 'camera'){
-            return <TouchableHighlight key={i} onPress={()=>{
-              Alert.alert(
-                'Alert Title',
-                '林の画面に移動',
-                [
-                  {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
-                  {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-                  {text: 'OK', onPress: () => console.log('OK Pressed')},
-                ],
-                { cancelable: false }
-              )
-            }
-            }
+            return <TouchableHighlight key={i} onPress={() => this.props.navigation.navigate('CameraView')}
 
             >
             <Image style={{ padding: 5,margin: 7,width: 80, height: 80}}

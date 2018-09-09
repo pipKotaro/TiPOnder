@@ -34,7 +34,7 @@ import CardFlip from 'react-native-card-flip';
 
 var Dimensions = require('Dimensions');
 const questions = [
- {question: "　Q参観日これでいい？\n　#参観日", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRu_Ruwx32hDxrfYEYb0Jvx4Cl6A-f6PiUx0wAdyxtdNeoERLGx", good:90},
+ {question: "　Q参観日これでいい？\n　#参観日", image: "https://stat.ameba.jp/user_images/20160928/18/ukky-monkey/b9/34/j/o0600060013759755439.jpg?caw=800", good:90},
  {question: "　Q10月の北海道これでいい？\n　#10月　#北海道", image: "http://img4.zozo.jp/fashionnews/107025/master_640_1.jpg", good:80},
  {question: "　Q野球観戦これでいいですか？\n　#野球観戦　#Baseball", image: "https://arine.akamaized.net/uploads/photo/external_photo/data/307775/xlarge_348c9101-ae88-4c23-bbe5-2bbb2bece8bf.jpg", good:70},
 ]
@@ -94,21 +94,23 @@ export default class HomeScreen extends React.Component {
          <CardFlip style={{flex:1}} ref={(card) => this.card = card} >
         <TouchableWithoutFeedback style={{flex:1}} onPress={this._onPressButton}>
         <View style={{flex:1}}>
-          <View style={{flex:8,margin:8}}>
-          <Image source={{uri:this.state.questions[this.state.count].image}}resizeMode='cover' style={{flex:8,width: null, borderRadius: 30,borderColor:'#707070',borderWidth:1}}/>
+          <View style={{flex:1,margin:8}}>
+
+          <Image source={{uri:this.state.questions[this.state.count].image}}resizeMode='cover' style={{flex:100,width: null, borderRadius: 30,borderColor:'#707070',borderWidth:1}}/>
           <View style={{height:70,top:-75,justifyContent:'center'}}>
           <Text style={styles.TextShadowStyle}>
             {this.state.questions[this.state.count].question }
              </Text>
           </View>
-             </View>
 
 
-         <View style={{top:-70}}>
+
+
+         <View style={{top:-60,flex:1}}>
           {this.state.isSkip?judge:buttons}
 
          </View>
-
+ </View>
          </View>
          </TouchableWithoutFeedback >
          <TouchableWithoutFeedback onPress={() => DismissKeyboard()} >
